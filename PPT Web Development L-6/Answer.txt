@@ -1,0 +1,309 @@
+Ques.1 What’s Constructor And Its Purpose?
+Ans:- In JavaScript, a constructor is a special function that is used to create and initialize objects. It serves as a blueprint or a template for creating multiple objects of the same type, often referred to as instances.
+
+The purpose of a constructor is to define the initial state and behavior of an object. When a new object is created using a constructor, it can have its own unique set of properties and methods. The constructor function is responsible for setting the initial values of these properties and defining any methods that the object should have.
+
+Constructors are typically defined using a function declaration or expression and are named with an initial capital letter by convention. When invoking a constructor function with the new keyword, a new object is created and the constructor's code is executed to initialize the object. The this keyword inside the constructor refers to the newly created object.
+
+Example:-  function Person(name, age) {
+                                        this.name = name;
+                                        this.age = age;
+  
+                                        this.sayHello = function() {
+                                                                     console.log("Hello, my name is " + this.name);
+                                                                   };
+                                                                }
+ 
+                                                                     // Creating instances using the constructor
+                                                                        var person1 = new Person("Nehal", 22);
+                                                                        var person2 = new Person("Patel", 24);
+
+                                                                        person1.sayHello(); // Output: Hello, my name is John
+                                                                        person2.sayHello(); // Output: Hello, my name is Jane
+
+
+the Person constructor function is used to create instances of people with a name and age property, as well as a sayHello method. Each instance created using the constructor has its own set of properties and can invoke the sayHello method.
+
+Constructors are widely used in JavaScript to create objects with similar characteristics, making it easier to manage and work with related data and behavior.
+
+
+
+
+Q.2 Explain This Keyword and Its Purpose?
+Ans:- the this keyword is a special identifier that refers to the context in which a function is executed. Its value is determined dynamically at runtime and can vary depending on how the function is called or invoked. The purpose of the this keyword is to provide access to the object that is currently being operated upon or to which a method belongs.
+
+The behavior of this can be a little complex and can differ depending on the context in which it is used. Here are some common use cases and how this behaves in each:
+
+1.Global scope: When this is used in the global scope (outside of any function), it refers to the global object. In web browsers, the global object is usually window.
+
+2.Function context: When this is used inside a regular function (not an arrow function), its value is determined by how the function is called:
+
+a. Function called as a method: If a function is called as a method of an object, this refers to the object itself. 
+
+ Example:-  var person = {
+                           name: "Nehal",
+                           sayHello: function() {
+                                                  console.log("Hello, my name is " + this.name);
+                                                }
+                                              };
+                                           person.sayHello(); // Output: Hello, my name is Nehal
+
+
+b. Function called as a standalone function: If a function is called without any context or as a standalone function, this refers to the global object (window in a browser environment) or undefined in strict mode.
+
+c. Function called with new keyword: When a function is called with the new keyword to create a new instance of an object, this refers to the newly created object.
+
+3.Event handlers: When this is used within an event handler function, it typically refers to the element that triggered the event.
+
+4.Explicitly setting this: You can also explicitly set the value of this using methods like call(), apply(), or bind(). These methods allow you to specify the object on which the function should be invoked and therefore determine the value of this.
+
+Understanding and correctly using the this keyword is important for working with object-oriented JavaScript, especially when defining methods and dealing with different execution contexts. It allows you to access and manipulate the properties and behavior of the current object dynamically.
+
+
+Q.3 What’s Call Apply Bind Method & Difference Between them?
+Ans:-  the call(), apply(), and bind() methods are used to explicitly set the value of this in a function. They provide more control over how a function is executed and allow you to specify the context in which the function should be invoked. Here's an explanation of each method and the differences between them:
+
+1. call():- The call() method is used to invoke a function with a specified this value and individual arguments passed in as separate parameters. The first argument of call() sets the value of this, and subsequent arguments are passed as arguments to the function.
+
+Example:- function sayHello() {
+                                console.log("Hello, " + this.name);
+                              }
+
+                                var person = {
+                                               name: "Nehal"
+                                             };
+                              sayHello.call(person); // Output: Hello, Nehal
+
+2. apply():- The apply() method is similar to call(), but it accepts the arguments to be passed to the function as an array or an array-like object. The first argument of apply() sets the value of this, and the second argument is an array or array-like object containing the arguments to be passed to the function.
+
+Example:- function sayHello(greeting) {
+                                        console.log(greeting + ", " + this.name);
+                                      }
+
+                                        var person = {
+                                                       name: "Nehal"
+                                                     };
+                                        sayHello.apply(person, ["Hello"]); // Output: Hello, Nehal
+
+3.bind(): The bind() method is used to create a new function that, when called, has a specified this value and any initial arguments provided. Unlike call() and apply(), bind() does not immediately invoke the function but returns a new function with the bound this value.
+
+Example:- function sayHello() {
+                                console.log("Hello, " + this.name);
+                              }
+
+                                var person = {
+                                              name: "Nehal"
+                                             };
+
+                                var sayHelloToPerson = sayHello.bind(Nehal);
+                                 sayHelloToPerson(); // Output: Hello, Nehal
+
+The main difference between call() and apply() is how the arguments are passed to the function. call() accepts individual arguments, while apply() accepts an array or array-like object. bind(), on the other hand, returns a new function with the bound this value, without immediately invoking the original function.
+
+These methods are useful when you want to explicitly set the value of this in a function or create a new function with a specific context. They provide flexibility and control over the execution of functions in JavaScript.
+
+
+
+
+Q.4 Explain OOPS ?
+Ans:- OOPS (Object-Oriented Programming) is a programming paradigm that organizes code into reusable and modular objects, each representing an entity or concept in the problem domain. It is based on the principles of encapsulation, inheritance, polymorphism, and abstraction. OOPS allows for structuring code in a way that models real-world objects and their interactions.
+
+The key concepts of OOPS are:
+
+1.Classes and Objects: A class is a blueprint or template that defines the properties (attributes) and behaviors (methods) of objects. An object is an instance of a class that encapsulates data and behavior.
+
+2.Encapsulation: Encapsulation is the bundling of data and related methods within a class, hiding the internal details and providing a public interface for interacting with the object. It allows for data abstraction and protects the integrity of the object.
+
+3.Inheritance: Inheritance is a mechanism that enables a class to inherit properties and methods from another class, known as the superclass or base class. It promotes code reuse and supports the creation of hierarchical relationships between classes.
+
+4.Polymorphism: Polymorphism allows objects of different classes to be treated as objects of a common superclass. It enables methods to be implemented in different ways in derived classes while maintaining a consistent interface. Polymorphism helps achieve code flexibility and extensibility.
+
+5.Abstraction: Abstraction focuses on defining essential features and behaviors of an object while hiding unnecessary details. It allows programmers to work with high-level concepts and models, making code more manageable and easier to understand.
+
+Benefits of OOPS include code reusability, modularity, maintainability, and scalability. By encapsulating data and behavior, OOPS promotes code organization, reduces code duplication, and enhances code readability. It also facilitates collaboration and team development by providing a standardized approach to building software systems.
+
+In languages such as JavaScript, Java, C++, and Python, OOPS is a widely used paradigm, and many frameworks and libraries are built based on OOPS principles. It provides a structured and efficient way to design and develop complex applications by modeling real-world entities and their relationships.
+
+
+
+Q.5 Whats Abstraction and Its Purpose?
+Ans:- Abstraction is a fundamental concept in object-oriented programming (OOP) that involves focusing on essential features and behaviors while hiding unnecessary details. It provides a simplified and high-level representation of complex systems, allowing programmers to work with conceptual models rather than dealing with intricate implementation details. The purpose of abstraction is to manage complexity, improve code readability, and facilitate code maintenance.
+
+In OOP, abstraction is achieved through the use of classes, which serve as blueprints for creating objects. A class defines the properties (attributes) and behaviors (methods) that are relevant to a particular concept or entity. The class encapsulates the internal workings of its objects, hiding the implementation details from the outside world.
+
+The main benefits and purposes of abstraction are:
+
+1.Simplification: Abstraction simplifies the programming process by focusing on the essential aspects of an object and hiding unnecessary complexities. It allows programmers to work with higher-level concepts and models, making code more understandable and manageable.
+
+2.Code Reusability: Abstraction promotes code reusability by creating reusable components (classes) that can be used in different contexts. Once a class is defined and abstracted, it can be instantiated to create multiple objects with similar characteristics, reducing the need for duplicating code.
+
+3.Modularity: Abstraction supports the development of modular code by breaking down complex systems into smaller, independent units. Each module encapsulates its internal logic and exposes a well-defined interface, making it easier to understand, test, and maintain.
+
+4.Encapsulation: Abstraction is closely related to encapsulation. Encapsulation involves bundling data and related methods within a class, providing a public interface for interacting with the object. By encapsulating the implementation details, abstraction shields the complexities from the users of the class, promoting a clear separation between the interface and the implementation.
+
+5.Flexibility and Adaptability: Abstraction enables flexibility and adaptability in software design. By focusing on high-level concepts and providing a well-defined interface, it allows for changes to be made to the underlying implementation without affecting the external code that relies on the abstraction. This makes it easier to modify and extend the software system as requirements evolve.
+
+Overall, abstraction helps manage the complexity of software systems by providing a simplified and conceptual view. It improves code organization, reduces code duplication, enhances code readability, and supports maintainability and scalability. By abstracting away unnecessary details, developers can focus on the core functionality and design elegant, reusable, and adaptable solutions.
+
+
+Q.6 Whats Polymorphism and Purpose of it?
+Ans:- Polymorphism is a concept in object-oriented programming that allows objects of different classes to be treated as objects of a common superclass. It refers to the ability of a single interface (method or property) to be implemented in multiple ways by different classes. The purpose of polymorphism is to provide flexibility, extensibility, and code reuse in software design.
+
+In JavaScript, polymorphism is achieved through dynamic typing and the ability to replace or override methods at runtime. Unlike statically typed languages, JavaScript does not enforce strict type checking, allowing objects to be flexible in their behavior and interaction.
+
+The key benefits and purposes of polymorphism in JavaScript are:
+
+1.Code Flexibility and Extensibility: Polymorphism allows you to define and implement methods in different ways in derived classes while maintaining a consistent interface. This means that objects of different classes can be used interchangeably, as long as they adhere to the same method signature. It promotes code flexibility and extensibility, enabling the addition of new classes and behaviors without modifying existing code.
+
+2.Code Reusability: Polymorphism facilitates code reuse by promoting the use of common interfaces and superclass types. By designing classes that adhere to a shared interface or inherit from a common superclass, you can write code that operates on the abstract type, allowing multiple concrete implementations to be used interchangeably. This reduces code duplication and promotes modular and reusable code.
+
+3.Simplified Interface: Polymorphism simplifies the interface for interacting with objects. Since objects of different classes can be treated uniformly, you can write code that works with abstract types rather than being concerned with the specific implementation details of individual objects. This abstraction helps manage complexity and promotes a clear separation between the interface and the implementation.
+
+4.Method Overriding: Polymorphism allows derived classes to override methods defined in their superclass, providing an opportunity to customize or extend the behavior of the inherited method. This enables specialization and customization of behavior for specific classes while still adhering to a shared interface.
+
+Polymorphism is a powerful and expressive feature of object-oriented programming. In JavaScript, it is often used in conjunction with inheritance to create flexible and modular code. By leveraging polymorphism, you can design systems that are adaptable to changing requirements, promote code reuse, and provide a consistent and simplified interface for interacting with objects.
+
+
+
+Q.7  Whats Inheritance and Purpose of it?
+Ans:- Inheritance is a fundamental concept in object-oriented programming (OOP) that allows a class to inherit properties and behaviors from another class. It enables the creation of a hierarchical relationship between classes, where a derived class (also known as a subclass or child class) inherits characteristics from a base class (also known as a superclass or parent class). The purpose of inheritance is to promote code reuse, modularity, and the modeling of real-world relationships.
+
+Here are the key aspects and purposes of inheritance:
+
+1.Code Reusability: Inheritance promotes code reuse by allowing derived classes to inherit the properties and behaviors of the base class. Common attributes and methods defined in the base class can be reused in multiple derived classes without duplicating code. This reduces redundancy and improves the maintainability of the codebase.
+
+2.Modularity and Organization: Inheritance helps in organizing and structuring code in a modular manner. Related classes can be grouped together, with shared characteristics defined in a common base class. This promotes a logical and hierarchical structure that is easier to understand and navigate.
+
+3.Code Extensibility: Derived classes have the ability to extend or specialize the behavior inherited from the base class. They can add new attributes and methods, override existing methods, or introduce new behavior specific to the derived class. Inheritance allows for customization and refinement of functionality while maintaining a common interface defined by the base class.
+
+4.Polymorphism: Inheritance is closely linked to polymorphism, which allows objects of different classes to be treated as objects of a common superclass. Inherited methods can be overridden in derived classes to provide specialized behavior. This enables polymorphic behavior, where objects of different classes can be used interchangeably, providing flexibility and extensibility in the code.
+
+5.Model Real-World Relationships: Inheritance is often used to model relationships that exist in the real world. For example, in a system representing animals, you might have a base class called Animal with properties and behaviors common to all animals, and derived classes such as Cat, Dog, and Bird that inherit from Animal and add specific characteristics unique to each type of animal.
+
+By leveraging inheritance, developers can create a hierarchical structure that promotes code reuse, modularity, and extensibility. It allows for a more intuitive representation of real-world relationships and provides a solid foundation for building complex and scalable applications.
+
+
+
+
+Q.8 Whats Encapsulation and Purpose of it ?
+Ans:- Encapsulation is a fundamental concept in object-oriented programming (OOP) that combines data and related methods into a single unit called a class. It involves bundling data and behavior together, hiding the internal details of an object and providing a public interface for interacting with it. The purpose of encapsulation is to achieve data abstraction, promote code organization, and protect the integrity of the object.
+
+Here are the key aspects and purposes of encapsulation:
+
+1.Data Abstraction: Encapsulation allows for data abstraction, which means that the internal details of an object are hidden from the outside world. Only the essential properties and behaviors are exposed through a well-defined public interface. This abstraction simplifies the usage of the object and shields the complexity of the underlying implementation.
+
+2.Information Hiding: Encapsulation supports information hiding, also known as data hiding. It ensures that the internal state of an object is not directly accessible or modifiable from outside the object's methods. By encapsulating the data within the object and exposing controlled access through methods, encapsulation protects the integrity and consistency of the object's data.
+
+3.Code Organization and Modularity: Encapsulation promotes code organization and modularity by grouping related data and behavior into a single class. This improves code readability, maintainability, and reusability. With encapsulation, you can encapsulate the implementation details within the class, allowing other parts of the codebase to interact with the object through its public interface.
+
+4.Access Control: Encapsulation provides control over access to the internal state and behavior of an object. By defining proper access modifiers (e.g., public, private, protected) in the class, you can specify which members are accessible from outside the class. This enables you to enforce encapsulation and prevent unauthorized modification or access to the object's data.
+
+5.Code Flexibility and Evolution: Encapsulation enhances code flexibility and evolution by decoupling the object's interface from its implementation. The internal implementation details of an object can be changed without affecting the external code that relies on the object's public interface. This improves code maintainability and allows for easier updates, refactoring, and extension of the system.
+
+Encapsulation is a key principle of OOP that promotes the separation of concerns, information hiding, and code organization. It allows for data abstraction, protects the integrity of objects, and provides a well-defined public interface for interacting with the encapsulated data and behavior. By encapsulating data and methods together, encapsulation facilitates modular design, code reuse, and long-term maintainability of software systems.
+
+
+
+
+Q.9 Explain Class in JavaScript?
+Ans:- a class is a blueprint or a template for creating objects that share the same structure and behavior. It serves as a constructor function and provides a way to define and create multiple instances of objects with similar characteristics. Classes were introduced in ECMAScript 2015 (ES6) to provide syntactic sugar and a more familiar syntax for working with objects in an object-oriented manner.
+
+Example:- class Person {
+                        constructor(name, age) {
+                                                this.name = name;
+                                                this.age = age;
+                                               }
+
+                                                sayHello() {
+                                                console.log(`Hello, my name is ${this.name}.`);
+                                               }
+                                            }
+
+In the example above, the Person class is defined with a constructor and a sayHello method. The constructor is a special method that is automatically called when a new instance of the class is created. It initializes the object's properties (name and age) based on the arguments passed to the constructor.
+
+The sayHello method is defined within the class and can be called on instances of the Person class. It logs a greeting message to the console, using the name property of the object.
+
+To create an instance of the class, you can use the new keyword:
+
+Example:- const person1 = new Person("Nehal", 25);
+          const person2 = new Person("Patel", 30);
+
+In this case, person1 and person2 are two separate instances (objects) created from the Person class, with their own unique name and age properties. You can call the sayHello method on each instance to invoke the behavior defined within the class.
+
+It's important to note that under the hood, JavaScript classes are primarily syntactic sugar over the existing prototype-based inheritance model in JavaScript. The class syntax makes it easier and more intuitive to define and work with objects in an object-oriented manner.
+
+JavaScript classes also support inheritance, where one class can inherit properties and methods from another class using the extends keyword. This enables the creation of class hierarchies and promotes code reuse through the concept of subclassing and superclassing.
+
+Example:- class Student extends Person {
+                                         constructor(name, age, grade) {
+                                                                         super(name, age);
+                                                                         this.grade = grade;
+                                                                       }
+
+                                         displayGrade() {
+                                                          console.log(`I am in grade ${this.grade}.`);
+                                                        }
+                                       }
+
+In this example, the Student class extends the Person class, inheriting its properties and methods. The super keyword is used within the Student class's constructor to call the parent class's constructor and initialize the inherited properties. The displayGrade method is specific to the Student class.
+
+JavaScript classes provide a cleaner syntax and a more familiar object-oriented programming approach for defining and working with objects. They support encapsulation, constructor initialization, method definitions, and inheritance, making it easier to structure and maintain complex code.
+
+
+
+
+Q.10 What’s Super Keyword & What it does?
+Answer:- the super keyword is used to call and access the parent class's properties and methods from within a subclass. It provides a way to reference the superclass (parent class) and invoke its constructor or methods. The super keyword can be used in two contexts: within a constructor and within a method.
+
+1.Within a Constructor:-
+
+When a subclass has its own constructor, the super() method must be called inside the constructor of the subclass to invoke the constructor of the superclass. This ensures that the superclass's initialization code is executed before the subclass's initialization code. The super() method takes any necessary arguments that need to be passed to the parent class's constructor.
+
+Example:- class Child extends Parent {
+                                      constructor(name, age) {
+                                                               super(name); // Call the Parent class's constructor with the name argument
+                                                               this.age = age;
+                                                             }
+                                                          }
+
+In this example, the super(name) line calls the Parent class's constructor and passes the name argument to it.
+
+2.Within a Method:-
+
+The super keyword can also be used within a method of a subclass to access and invoke a method of the parent class with the same name. This allows the subclass to extend or override the behavior of the parent class's method while still being able to access and use it. 
+Example:- class Parent {
+                         greet() {
+                                   console.log("Hello, I am the parent.");
+                                 }
+                       }
+
+          class Child extends Parent {
+                          greet() {
+                                     super.greet(); // Call the greet() method of the Parent class
+                                     console.log("And I am the child.");
+                                  }
+                              }
+
+In this example, the super.greet() line within the Child class's greet() method calls the greet() method of the Parent class. This allows the child class to extend the behavior of the parent class's greet() method and add its own functionality.
+
+The super keyword is essential in maintaining the inheritance chain and allowing subclasses to access and leverage the functionality of their parent classes. It ensures proper initialization of superclass properties and methods within subclasses and allows for method overriding with the ability to invoke the parent class's method.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
